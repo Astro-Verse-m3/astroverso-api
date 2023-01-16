@@ -6,6 +6,7 @@ import { loginRouter } from "./routes/login.routes";
 import { usersRouter } from "./routes/users.routes";
 import { astrosRouter } from "./routes/astros.routes";
 import { categoriesRouter } from "./routes/categories.routes";
+import { quizzesRouter } from "./routes/quiz.routes";
 
 export const app = express();
 app.use(express.json());
@@ -16,7 +17,7 @@ app.use("/login", loginRouter);
 // app.use("/posts");
 app.use("/astros", astrosRouter);
 app.use("/categories", categoriesRouter);
-app.use("/quiz");
+app.use("/quizzes", quizzesRouter);
 // app.use("/questions");
 // app.use("/options");
 // app.use("/extras");

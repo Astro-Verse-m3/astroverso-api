@@ -10,24 +10,19 @@ import { idIsValidMiddleware } from "../middlewares/IdIsValid.middleware";
 import { createQuizSchema, updateQuizSchema } from "../schemas/quiz.schema";
 import { createQuizController } from "../controllers/quiz/createQuiz.controller";
 
-export const quizRouter = Router();
+export const quizzesRouter = Router();
 
-quizRouter.post(
+quizzesRouter.post(
   "",
   AuthMiddleware,
   isAdmMiddleware,
   dataIsValidMiddleware(createQuizSchema),
   createQuizController
 );
-quizRouter.get(
-  "",
-  AuthMiddleware,
 
-  isAdmMiddleware,
-  listQuizzesController
-);
+quizzesRouter.get("", AuthMiddleware, isAdmMiddleware, listQuizzesController);
 
-quizRouter.patch(
+quizzesRouter.patch(
   "/:id",
   AuthMiddleware,
   isAdmMiddleware,
@@ -35,7 +30,8 @@ quizRouter.patch(
   idIsValidMiddleware,
   updateQuizController
 );
-quizRouter.delete(
+
+quizzesRouter.delete(
   "/:id",
   AuthMiddleware,
   isAdmMiddleware,
