@@ -29,6 +29,14 @@ export const createPostService = async (
     throw new AppError("Category not found", 404);
   }
 
+  const postFound = await postsRep.findOneBy({
+    description: postData.description,
+  });
+
+  if (postFound) {
+    throw new AppError("Post already exists!", 409);
+  }
+
   const newPost = postsRep.create({
     description: postData.description,
     astros: astroFound,
